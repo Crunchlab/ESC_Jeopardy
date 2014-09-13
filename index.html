@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="Esc_Jeopardy" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESC Jeopardy</title>
+    <link rel="icon" href="assets/jeopardy/img/favicon.png">
+
+    <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" href="assets/vendor/twitter/bootstrap-3.2.0/css/bootstrap.min.css">
+    <!-- Bootstrap Theme -->
+    <link rel="stylesheet" href="assets/vendor/twitter/bootstrap-3.2.0/css/bootstrap-theme.min.css">
+    <!-- GoogleFonts PressStart 2P -->
+    <link rel='stylesheet' href='assets/vendor/google/fonts/font.css' type='text/css'>
+    <!-- Angular-xeditable Theme -->
+    <link rel='stylesheet' href='assets/vendor/angular-xeditable/angular-xeditable-0.1.8/css/xeditable.css' type='text/css'>
+    <!-- Angular-hotkeys Theme -->
+    <link rel='stylesheet' href='assets/vendor/angular-hotkeys/hotkeys.css' type='text/css'>
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/jeopardy/css/main.css">
+  </head>
+  <body>
+
+
+    <div class="container-fluid total">
+      <div class="row header" data-ng-controller="PlayersInterface">
+        <div data-ng-repeat="(index, data) in players" data-ng-if="index!='7'" class="col-md-2 player{{index}}">
+          <div><a href="#/player/{{index}}" class="player">{{data.name}}</a><br /><span class="points">{{data.score}} Punti</span></div>
+        </div>
+      </div>
+      <div class="viewport" ng-view></div>
+      <div class="row footer" data-ng-controller="PlayersInterface">
+        <div class="col-md-9 game-message player{{game.player_in_control}}"><div>Player {{game.player_in_control}} is in control of the board</div></div>
+        <div class="col-md-3 copyantani"><div>(<div class="flipped">c</div>)&nbsp;<a href="#/board">Antani</a></div></div>
+      </div>
+    </div>
+
+    <!-- AngularJS Main Library -->
+    <script src="assets/vendor/google/angularjs-1.2.22/angular.min.js"></script>
+
+    <!-- AngularJS Route Library -->
+    <script src="assets/vendor/google/angularjs-1.2.22/angular-route.min.js"></script>
+
+    <!-- AngularJS xeditable Library -->
+    <script src="assets/vendor/angular-xeditable/angular-xeditable-0.1.8/js/xeditable.min.js"></script>
+
+    <!-- AngularJS local storage Library -->
+    <script src="assets/vendor/angular-local-storage/angular-local-storage.js"></script>
+
+    <!-- AngularJS hotkeys Library -->
+    <script src="assets/vendor/angular-hotkeys/hotkeys.js"></script>    
+
+    <!-- jQuery Library -->
+    <script src="assets/vendor/jquery/jquery-2.1.1/jquery.min.js"></script>
+
+    <!-- Bootstrap JS file -->
+    <script src="assets/vendor/twitter/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- ESC_Jeopardy AngularJS Application -->
+    <script src="assets/jeopardy/js/app.js"></script>
+
+    <!-- ESC_Jeopardy AngularJS Controllers -->
+    <script src="assets/jeopardy/js/controllers.js"></script>
+
+    <script type="text/javascript">
+      function loadaudio() {
+        $("#audioquestion").trigger('load');
+      }
+      function loadvideo() {
+        $("#videoquestion").trigger('load');
+      }
+      function showdailydouble() {
+        alert("boh");
+        $("#dailydouble").show();
+      }
+    </script>
+  </body>
+</html>
