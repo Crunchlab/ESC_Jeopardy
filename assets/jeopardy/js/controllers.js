@@ -1,6 +1,6 @@
 var ESC_JeopardyControllers = angular.module('ESC_JeopardyControllers', []);
 
-var num = '2';
+var round = '_demo';
 
 ESC_JeopardyControllers.controller('LoadBoard', ['$scope', '$rootScope', '$http', 'localStorageService',
   function ($scope, $rootScope, $http, localStorageService) {
@@ -14,7 +14,7 @@ ESC_JeopardyControllers.controller('LoadBoard', ['$scope', '$rootScope', '$http'
     }  
 
 
-  $http({method: 'GET', url: 'games/round' + num + '.json'}).success(function(data) {
+    $http({ method: 'GET', url: 'games/round' + round + '.json' }).success(function (data) {
     var processed_data = new Array();
 
     var keys  = Object.keys(data);
@@ -70,7 +70,7 @@ ESC_JeopardyControllers.controller('LoadQuestion', ['$scope', '$rootScope', '$ht
       $rootScope.game = localStorageService.get('game');
     }
 
-    $http({ method: 'GET', url: 'games/round' + num + '.json' }).success(function (data) {
+    $http({ method: 'GET', url: 'games/round' + round + '.json' }).success(function (data) {
       var current_question = data['category'+$routeParams.catId][$routeParams.questionId];
       $scope.current_question = current_question;
       if($scope.current_question.answer_type == "text"){
